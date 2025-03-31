@@ -40,8 +40,5 @@ router.post("/subscription/createorder", createSubscriptionOrder);
 router.post("/verify-payment", verifyPayment);
 
 
-// 4) Notification 
-
-
 
 module.exports = router;
