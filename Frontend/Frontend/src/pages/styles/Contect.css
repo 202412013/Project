@@ -1,0 +1,170 @@
+/* Contact Page Full Width */
+.contact-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #ffe5e8; /* Light pink background */
+  box-sizing: border-box;
+}
+
+/* Form Container */
+.container {
+  width: 100%;
+  max-width: 900px; /* Ensures good readability */
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #e91e63;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #f8a5c2;
+  border-radius: 5px;
+  background: #ffe5ec;
+  color: #333;
+  font-size: 1rem;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Submit Button */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  background: #ff6584;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+button:hover {
+  background: #e94e77;
+}
+
+/* Status Messages */
+.message {
+  text-align: center;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.success {
+  background: #c8e6c9;
+  color: #2e7d32;
+}
+
+.error {
+  background: #ffcdd2;
+  color: #c62828;
+}
+
+/* Contact Information */
+.contact-info {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  width: 100%;
+}
+
+.contact-info div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.contact-info i {
+  color: #e91e63;
+  font-size: 1.2rem;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+      max-width: 90%;
+      padding: 20px;
+  }
+
+  .title {
+      font-size: 2rem;
+  }
+
+  input, textarea {
+      font-size: 0.95rem;
+  }
+
+  button {
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+      width: 95%;
+  }
+
+  .title {
+      font-size: 1.8rem;
+  }
+
+  input, textarea {
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .title {
+      font-size: 1.6rem;
+  }
+
+  button {
+      font-size: 0.95rem;
+  }
+}

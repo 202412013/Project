@@ -1,0 +1,40 @@
+/* CSS/Profile.css */
+.profile-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .profile-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .sign-out, .add-account {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 150px;
+    border: none;
+    border-radius: 5px;
+    background: #ff4d4d;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .add-account {
+    background: #4CAF50;
+  }
+  
+  .profiles-list {
+    margin-top: 20px;
+  }
+  

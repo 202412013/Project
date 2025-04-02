@@ -1,0 +1,106 @@
+/* Main container for book details */
+.book-detail-page {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding: 40px;
+  background-color: #fde7e9; /* White background for a clean look */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Left section for book cover and details */
+.left-section {
+  text-align: center;
+}
+
+/* Styling for book cover image */
+.book-cover {
+  width: 100%;
+  max-width: 300px; /* Max width for book cover */
+  height: 400px; /* Maintain aspect ratio */
+  border-radius: 12px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Text details styling */
+.left-section p {
+  font-size: 20px;
+  color: #555;
+  margin: 10px 0;
+}
+
+/* Share icons section */
+.share-icons {
+  margin-top: 25px;
+}
+
+.share-icons i {
+  font-size: 22px;
+  margin: 0 10px;
+  cursor: pointer;
+  color: #0078d4; /* Slightly different share icon color */
+}
+
+/* Right section for book information */
+.right-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title and author styles */
+.book-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.book-author {
+  font-size: 26px;
+  color: #666;
+}
+
+/* Ratings style */
+.ratings {
+  font-size: 24px;
+  color: #f39c12; /* Updated gold color for ratings */
+  margin: 20px 0;
+}
+
+/* Button container styling */
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 30%;
+  max-width: 600px; /* Adjust width as needed */
+  padding: 15px;
+  
+  border-radius: 50px 50px 50px 50px; /* Rounded edges on the right */
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.buttons:hover {
+  /* Slightly darker hover */
+  transform: scale(1.02);
+}
+
+.buttons span {
+  display: block;
+  font-size: 18px;
+  padding: 5px;
+  color: white;
+}
+
+/* Book information text style */
+.book-info {
+  font-size: 15px;
+  color: #444;
+ 
+}

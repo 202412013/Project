@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e0e0e0, #f8d7da);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    width: 700px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .left-section {
+    flex: 1;
+    background: linear-gradient(to bottom, #3066BE, #C13A3A);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .left-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .signin-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .signin-btn:hover {
+    background: white;
+    color: #3066BE;
+  }
+  
+  .right-section {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .right-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f8d7da;
+    border-radius: 5px;
+    background-color: #f8d7da;
+  }
+  
+  .submit-btn {
+    background: linear-gradient(to right, #3066BE, #C13A3A);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .submit-btn:hover {
+    opacity: 0.9;
+  }
+  
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+  

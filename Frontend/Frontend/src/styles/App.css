@@ -1,0 +1,218 @@
+/* Navbar */
+.Navbar {
+  background: linear-gradient(135deg, #FF6B6B, #1E3A8A);
+  padding: 12px 25px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Logo */
+.nav-logo p {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-menu a {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-menu a:hover {
+  color: #ccc;
+ transform: scale(2.5);
+}
+
+/* Search Bar */
+.search {
+  display: flex;
+  background-color: white;
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.search-bar {
+  padding: 3px 15px;
+  border-radius: 20px;
+  border: 2px solid white;
+  background: white;
+  color: black;
+  width: 220px;
+  font-size: 12px;
+}
+
+.Search-icon {
+  font-size: 22px;
+  color: #FF6B6B;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  margin-right: -25px;
+  transition: color 0.3s ease-in-out;
+}
+
+.Search-icon:hover {
+  color: #F7B801;
+}
+
+/* Icons */
+.icon {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.auth-button, .Bell-icon, .fav-icon {
+  font-size: 30px;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.auth-button:hover, .Bell-icon:hover, .fav-icon:hover {
+  transform: scale(1.5);
+  
+  background: transparent;
+}
+
+
+
+
+/* Footer */
+.footer {
+  background: linear-gradient(135deg, #2b499a, #c42a2a);
+  color: #fff;
+  padding: 25px 40px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.footer-section {
+  width: 220px;
+  margin-bottom: 15px;
+}
+.footer-section p{
+  color: white;
+}
+
+.footer-section h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 6px 0;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #fcfaf7;
+  transition: color 0.3s ease-in-out;
+}
+
+.footer-section ul li a:hover {
+  color: #f7b1df;
+}
+
+/* Footer Brand */
+.brand h2 {
+  font-size: 24px;
+  color: white;
+}
+
+/* Newsletter */
+.newsletter input {
+  width: 85%;
+  padding: 10px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.newsletter button {
+  margin-top: 12px;
+  padding: 10px 3px;
+  border: none;
+  background-color: #F7B801;
+  color: #181515;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s ease-in-out;
+}
+
+.newsletter button:hover {
+  background-color: #e6b800;
+}
+
+/* Contact Section */
+.contact p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+/* Social Media Icons */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 26px;
+  margin-top: 12px;
+}
+
+.social-icons svg {
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.social-icons svg:hover {
+  color: #F7B801;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 12px;
+  font-size: 12px;
+  color: #ddd;
+}

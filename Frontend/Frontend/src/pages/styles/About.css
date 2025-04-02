@@ -1,0 +1,112 @@
+/* About.css */
+
+/* Full-width background with a soft pastel shade */
+.About {
+  width: 97.5%;
+  background: #fde7e9; /* Light pastel pink */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Centered container with a soft background */
+.container {
+ max-width: 2000px;
+
+ 
+  background: #fce3e5; /* Slightly lighter pink */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Main title */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333; /* Darker for contrast */
+  margin-bottom: 20px;
+}
+
+/* Paragraph text */
+.about-text {
+  font-size: 1.15rem;
+  color: #444; 
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Section headings */
+.about-subtitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #222; 
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* List styling */
+.about-list {
+  list-style-type: disc;
+  padding-left: 30px;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* List item style */
+.about-list li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+/* Call-to-action button */
+
+
+.button{
+  color: rgb(252, 211, 218);
+  width:10%;
+  padding-left:  10px;
+
+}
+
+/* Footer text */
+.about-footer {
+  font-size: 1.1rem;
+  color: #666;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .about-text {
+    font-size: 1rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .about-list li {
+    font-size: 1rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 12px 20px;
+  }
+}

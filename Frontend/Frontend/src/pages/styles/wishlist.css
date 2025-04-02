@@ -1,0 +1,80 @@
+.wishlist-page {
+ 
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #ffeefc;
+  }
+  
+  .wishlist-page h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    flex-grow: 1;
+    text-align: left;
+  
+  }
+  .wishlist{
+    position: absolute;
+    bottom: 30px;
+    right:20px;
+    background: none;
+    font-size: 35px;
+  }
+
+  .wishlist:hover{
+    color: white;
+    background: transparent;
+  }
+  
+  .wishlist-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .wishlist-container .card {
+    position: relative;
+    flex: 0 0 auto;
+    width: 225px;
+    height: 400px;
+   
+    background: linear-gradient(135deg, #f6f3f9, #fcfafa); /* Lilac & sky blue */
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+  }
+  
+  .wishlist-container .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .wishlist-container .card img {
+    width: 100%;
+    height: 75%;
+    border-radius: 10px;
+  }
+  
+  .wishlist-container .card h3 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+  }
+  
+  .wishlist-container .card p {
+    font-size: 15px;
+    color: #555;
+  }
+  
+  p {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+  }
+ 
