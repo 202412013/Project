@@ -7,9 +7,19 @@ const cors = require('cors');
 dotenv.config();
 connectDB();
 
+
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:5173',  // ⬅️ Your React App URL
+    credentials: true                 // ⬅️ Allow cookies
+  }));
+  
+  // cookie-parser bhi use karo agar nahi kiya
+  const cookieParser = require('cookie-parser');
+  app.use(cookieParser());
+
 app.use(express.json());
-app.use(cors());
 
 app.use('/api/auth',authRoutes);
 

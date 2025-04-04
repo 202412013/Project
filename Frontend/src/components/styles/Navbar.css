@@ -1,100 +1,249 @@
-/* Navbar */
+/* 🌍 Navbar Container */
 .Navbar {
-    background: linear-gradient(135deg, #FF6B6B, #1E3A8A);
-    padding: 12px 25px;
-    height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: linear-gradient(to right, #2279c0, #c34438);
+  color: white;
+  position: relative;
+  z-index: 1000;
+}
+
+/* 📌 Search Bar */
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 250px; /* Default size */
+  background: white;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  transition: width 0.3s ease-in-out;
+}
+
+/* 📌 Input Field */
+.search-bar {
+  width: 100%;
+  padding: 10px 40px 10px 10px; /* Right padding to avoid icon overlap */
+  border: none;
+  border-radius: 25px;
+  font-size: 15px;
+  outline: none;
+}
+
+/* 📌 Search Icon (Inside Input, Right Side) */
+.Search-icon {
+  position: absolute;
+  right: 30px; /* 🔥 Moves icon inside input field, right side */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px; /* ✅ Icon size auto */
+  width:auto;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.allicon{
+  display:flex;
+  gap:2rem;
+}
+
+.Bell-icon:hover{
+  color:#ffd700;
+}
+
+.fav-icon:hover{
+  color:#ffd700;
+}
+
+.auth-button:hover{
+  color:#ffd700;
+}
+
+/* 📌 Mobile Responsive Search */
+@media screen and (max-width: 768px) {
+  .search {
+    width: 100px; /* Start with only the icon visible */
+    justify-content: center;
+    height: 20px;
+    overflow: hidden;
+  }
+
+  .allicon{
+    display: none;
+  }
+
+  .search.active {
+    width: 80%; /* Expand when clicked */
+  }
+
+  .search-bar {
+    display: flex; 
+  }
+
+  .search.active .search-bar {
+    display: block;
+    width: 100%;
+    font-size: 24px;
+  }
+
+  .Search-icon {
+      display:flex; /* Smaller icon on mobile */
+  }
+}
+
+
+.icon button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+/* 📌 Hamburger Menu */
+.hamburger-menu {
+  display: none;
+}
+
+
+/* 📌 Mobile Menu (Compact & Right-Aligned) */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end; /* Align text to left inside the box */
+  position: absolute;
+  top: 45px; /* 🔥 Ensures it appears just below the hamburger */
+  right: 5px; /* 🔥 Moves it to the right */
+  background: rgba(255, 255, 255, 0.9); /* 🔥 Slightly transparent white */
+  backdrop-filter: blur(8px); /* 🔥 Glass effect */
+  width: 160px; /* 🔥 Smaller box */
+  padding: 8px;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  list-style: none; /* ❌ Removes bullet points */
+}
+
+/* 📌 Show Mobile Menu when Active */
+.mobile-menu.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  width:auto;
+}
+
+/* 🌟 Mobile Menu Links */
+.mobile-menu a {
+  padding: 6px 12px;
+  width: 100%;
+  text-align: left;
+  color: #333; /* Dark text */
+  font-size: 14px; /* 🔥 Slightly smaller */
+  font-weight: bold;
+  text-transform: capitalize;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  display: block; /* 🔥 Ensures each link is full-width */
+}
+
+
+.mobile-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none; 
+}
+
+/* 🔥 Hover Effect */
+.mobile-menu a:hover {
+  color: #c34438;
+  transform: scale(1.05);
+}
+
+
+.hamburger-menu {
+  position: relative;
+  z-index: 1100; 
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .nav-menu, .allicon{
+    display: none;
+  }
+
+  .hamburger-menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-  }
-  
-  /* Logo */
-  .nav-logo p {
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-    margin: 0;
-    letter-spacing: 1px;
-  }
-  
-  /* Navigation Menu */
-  .nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-  }
-  
-  .nav-menu a {
+    background: black;
+    border: none;
     color: white;
     font-size: 18px;
-    font-weight: 600;
     cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
   }
-  
-  .nav-menu a:hover {
-    color: #ccc;
-   transform: scale(2.5);
+
+  .hamburger-menu:active {
+    transform: scale(1.1);
+    color: #ffd700;
   }
-  
-  /* Search Bar */
+
+  .mobile-menu {
+    width: 80%;
+  }
+}
+
+
+@media screen and (max-width: 490px) {
+  .hamburger-menu {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .mobile-menu {
+    width: 90%;
+  }
+
   .search {
-    display: flex;
-    background-color: white;
-    border-radius: 25px;
-    padding: 5px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+    display:none;
   }
-  
+
+  .search.active {
+    width: 90%;
+  }
+
   .search-bar {
-    padding: 3px 15px;
-    border-radius: 20px;
-    border: 2px solid white;
-    background: white;
-    color: black;
-    width: 220px;
+    font-size: 14px;
+    padding: 5px 30px 5px 8px;
+  }
+
+  .Search-icon {
     font-size: 12px;
   }
-  
-  .Search-icon {
-    font-size: 22px;
-    color: #FF6B6B;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-    margin-right: -25px;
-    transition: color 0.3s ease-in-out;
+
+  .allicon{
+    display:none;
   }
-  
-  .Search-icon:hover {
-    color: #F7B801;
-  }
-  
-  /* Icons */
-  .icon {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
-  
-  .auth-button, .Bell-icon, .fav-icon {
-    font-size: 30px;
-    color: white;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-  }
-  
-  .auth-button:hover, .Bell-icon:hover, .fav-icon:hover {
-    transform: scale(1.5);
-    
-    background: transparent;
-  }
-  
+}

@@ -7,7 +7,7 @@ import './styles/About.css';
 const About = () => {
   return (
     <div className="About">
-      <div className="container">
+      <div className="about-container">
         <h1 className="title">
           Welcome to Unwritten Cove – Your Digital Library, Anytime, Anywhere!
         </h1>

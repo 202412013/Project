@@ -10,6 +10,7 @@ import BookDetails from '../pages/BookDetails';
 import Wishlist from '../pages/Wishlist';
 import Contact from '../pages/Contact';
 import Profile from '../pages/Profile';
+import Login from '../pages/Login';
 
 const AppRoutes = () => {
   return (
@@ -24,6 +25,7 @@ const AppRoutes = () => {
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path ="/login" element={<Login />}/>
     </Routes>
   );
 };

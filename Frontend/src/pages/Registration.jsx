@@ -1,53 +1,63 @@
 import React, { useState } from "react";
-import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./styles/Registration.css";
 
 const Registration = () => {
-  const [isSignUp, setIsSignUp] = useState(false);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: "",
-    age: "",
-    category: "student",
+    fullName: "",
     email: "",
     password: "",
+    phoneNumber: "",
+    userRole: "",
   });
 
+  const [profilePic, setProfilePic] = useState(null);
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
-  const toggleMode = () => {
-    setIsSignUp(!isSignUp);
-    setError("");
-    setSuccess("");
-    setFormData({ username: "", age: "", category: "student", email: "", password: "" });
-  };
-
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
- 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (!formData.username || !formData.email || !formData.password) {
-      setError("All fields are required!");
-      return;
-    }
-
-    if (isSignUp && !formData.age) {
-      setError("Please enter your age!");
-      return;
-    }
-
-    setSuccess(isSignUp ? "Registration Successful!" : "Login Successful!");
-    setFormData({ username: "", age: "", category: "student", email: "", password: "" });
+  const handleFileChange = (e) => {
+    setProfilePic(e.target.files[0]); // Store the selected file
   };
 
- 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("fullName", formData.fullName);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("password", formData.password);
+    formDataToSend.append("phoneNumber", formData.phoneNumber);
+    formDataToSend.append("userRole", formData.userRole);
+    if (profilePic) {
+      formDataToSend.append("profilePic", profilePic);
+    }
+
+    try {
+      const response = await axios.post("http://localhost:5000/api/auth/signup",  formDataToSend,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+      setLoading(false);
+
+      if (response.status === 201) {
+        alert("Registration Successful! Click OK to proceed to Login.");
+        navigate("/login"); 
+      }
+    } catch (error) {
+      setLoading(false);
+      setError(error.response?.data?.error || "Something went wrong!");
+    }
+  };
+
   const handleGoogleSignIn = () => {
     alert("Google Sign-In feature coming soon!");
   };
@@ -55,58 +65,34 @@ const Registration = () => {
   return (
     <div className="auth-container">
       <div className="auth-left">
-        <h2>{isSignUp ? "Welcome Back!" : "New Here?"}</h2>
-        <p>{isSignUp ? "Login to continue" : "Sign up and start your journey with us"}</p>
-        <button onClick={toggleMode} className="switch-btn">
-          {isSignUp ? "SIGN IN" : "SIGN UP"}
+        <h2>New Here?</h2>
+        <p>Sign up and start your journey with us</p>
+        <button className="switch-btn">
+          SIGN IN
         </button>
       </div>
 
       <div className="auth-right">
-        <h2>{isSignUp ? "Create Account" : "Sign In"}</h2>
+        <h2>Create Account</h2>
 
         <div className="social-icons">
-          <FaFacebookF className="icon" />
           <FaGoogle className="icon" onClick={handleGoogleSignIn} />
-          <FaLinkedinIn className="icon" />
         </div>
 
-        <p className="email-text">or use your email for {isSignUp ? "registration" : "login"}</p>
+        <p className="email-text">or use your email for registration</p>
 
         {error && <p className="error-message">{error}</p>}
-        {success && <p className="success-message">{success}</p>}
 
         <form onSubmit={handleSubmit}>
-          {isSignUp && (
-            <input
-              type="text"
-              name="username"
-              placeholder="Enter your name"
-              value={formData.username}
-              onChange={handleChange}
-              className="input-field"
-              required
-            />
-          )}
-
-          {isSignUp && (
-            <input
-              type="number"
-              name="age"
-              placeholder="Enter your age"
-              value={formData.age}
-              onChange={handleChange}
-              className="input-field"
-            />
-          )}
-
-          {isSignUp && (
-            <select name="category" value={formData.category} onChange={handleChange} className="input-field">
-              <option value="student">Student</option>
-              <option value="teacher">Teacher</option>
-              <option value="author">Author</option>
-            </select>
-          )}
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Enter your full name"
+            value={formData.fullName}
+            onChange={handleChange}
+            className="input-field"
+            required
+          />
 
           <input
             type="email"
@@ -128,7 +114,69 @@ const Registration = () => {
             required
           />
 
-          <button type="submit" className="submit-btn">{isSignUp ? "SIGN UP" : "SIGN IN"}</button>
+          <input
+            type="text"
+            name="phoneNumber"
+            placeholder="Enter your phone number"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            className="input-field"
+            required
+          />
+
+{/*   <div className="profile-upload-container">
+          <label htmlFor="profilePic" className="file-label">
+            Upload Profile Picture
+          </label>
+            <input
+              id="profilePic"
+              name="profilePic"  
+              type="file"
+              accept="image/png, image/jpeg"
+              onChange={handleFileChange}
+              className="file-input"
+            />
+        </div> */}
+
+  
+          <div className="role-selection">
+            <p>Select User Role:</p>
+            <label>
+              <input
+                type="radio"
+                name="userRole"
+                value="Student"
+                checked={formData.userRole === "Student"}
+                onChange={handleChange}
+              />
+              Student
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="userRole"
+                value="Professor"
+                checked={formData.userRole === "Professor"}
+                onChange={handleChange}
+              />
+              Professor
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="userRole"
+                value="Author"
+                checked={formData.userRole === "Author"}
+                onChange={handleChange}
+              />
+              Author
+            </label>
+          </div>
+
+
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? "Signing Up..." : "SIGN UP"}
+          </button>
         </form>
       </div>
     </div>

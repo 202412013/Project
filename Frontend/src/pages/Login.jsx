@@ -1,46 +1,61 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./styles/Login.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const navigate = useNavigate(); // Initialize navigation
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Simulated user data (replace with API call in a real app)
-  const users = [{ email: "test@example.com", password: "password123" }];
+  // Validate email format before sending request
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (!formData.email || !formData.password) {
-      setError("Please fill in all fields.");
-      return;
-    }
-
-    const user = users.find(
-      (user) =>
-        user.email === formData.email && user.password === formData.password
-    );
-
-    if (!user) {
-      setError("Invalid email or password. Please sign up first.");
-    } else {
-      setSuccess("Login successful! Redirecting...");
-      setTimeout(() => {
-        navigate("/Home.jsx"); // Redirect to home page
-      }, 15);
-    }
-  };
-
+  const handleSubmit = async (e) => {
+       e.preventDefault();
+       setError("");
+       setLoading(true);
+    
+       if (!formData.email || !formData.password) {
+          setError("Please fill in all fields.");
+           return;
+       } 
+    
+       if (!isValidEmail(formData.email)) {
+           setError("Invalid email format!");
+           return;
+       }
+    
+    try {
+        console.log(formData.email, formData.password); // Correct way to access the values
+        const response = await axios.post('http://localhost:5000/api/auth/login',
+        { email: formData.email, password: formData.password }, // Use formData here
+        { withCredentials: true } // Yeh zaroori hai cookie bhejne ke liye
+        );
+        
+      if (response.status === 200) {
+          alert("Login successful");
+      // Set context ya redirect
+          navigate("/");
+        }
+      } catch (error) {
+        console.log(error);
+        setError(error.response?.data?.error || "Something went wrong!");
+      } finally {
+        setLoading(false);
+      }
+    };
   return (
+    <div className="login-container">
     <div className="container">
       <div className="left-section">
         <h2>Welcome Back!</h2>
@@ -83,11 +98,12 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" className="submit-btn">
-            Login
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };

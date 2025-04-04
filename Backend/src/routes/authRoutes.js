@@ -1,7 +1,9 @@
 const express = require('express');
 const  profilepics  = require('../middleware/profilepics');
 const { signup, googleSignup } = require('../controllers/signupController');
-const { login } = require('../controllers/loginController');
+const { login, getMe, logout } = require('../controllers/loginController');
+
+const { verifyToken } = require('../middleware/authmiddleware');
 
 const { forgotPassword, resetPassword } = require('../controllers/forgetPassword');
 const { uploadBook } = require('../controllers/bookcontroller');
@@ -21,6 +23,8 @@ const router = express.Router();
 router.post('/signup', profilepics.single('profilePic'), signup);
 router.post('/google-signup', googleSignup);
 router.post('/login',login);
+router.get('/me', verifyToken, getMe);
+router.post('/logout', logout);
 
 //  forget api
 router.post('/forgot-password', forgotPassword);
