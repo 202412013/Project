@@ -19,9 +19,12 @@ app.use(cors({
   const cookieParser = require('cookie-parser');
   app.use(cookieParser());
 
-app.use(express.json());
+  app.use(express.json());
 
 app.use('/api/auth',authRoutes);
+console.log("Auth routes mounted!");
+
+
 
 const PORT = process.env.PORT;
 

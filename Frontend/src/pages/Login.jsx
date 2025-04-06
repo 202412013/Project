@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./styles/Login.css";
+import { useUser } from '../context/Usercontext';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -9,6 +10,8 @@ const Login = () => {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const { fetchUser } = useUser();
 
   // Validate email format before sending request
   const isValidEmail = (email) => {
@@ -42,6 +45,8 @@ const Login = () => {
         { withCredentials: true } // Yeh zaroori hai cookie bhejne ke liye
         );
         
+        await fetchUser();
+
       if (response.status === 200) {
           alert("Login successful");
       // Set context ya redirect

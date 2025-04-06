@@ -10,7 +10,6 @@ export const UserProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-        console.log("Hello");
       const res = await axios.get('http://localhost:5000/api/auth/me', {
         withCredentials: true,
       });

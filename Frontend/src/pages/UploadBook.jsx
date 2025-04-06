@@ -15,7 +15,7 @@ const UploadBook = () => {
     title: '',
     category: '',
     description: '',
-    inSubscription: 'false', // value as string for backend compatibility
+    inSubscription: 'false',
     publishedDate: ''
   });
 
@@ -30,10 +30,7 @@ const UploadBook = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -41,19 +38,26 @@ const UploadBook = () => {
     setError('');
     setMessage('');
 
+    if (!bookFile || !coverImage) {
+      setError('Please select both a book file and a cover image.');
+      return;
+    }
+
+    console.log(coverImage);
+
     const form = new FormData();
     form.append('title', formData.title);
-    form.append('author', user.fullName || user.email || user._id); // Ensure author is sent!
+    form.append('author', user.fullName || user.email || user._id);
     form.append('category', formData.category);
     form.append('description', formData.description);
     form.append('inSubscription', formData.inSubscription);
-    form.append('publishedDate', formData.publishedDate || new Date().toISOString().split('T')[0]);
     form.append('bookFile', bookFile);
     form.append('coverImage', coverImage);
+    form.append('publishedDate', formData.publishedDate || new Date().toISOString().split('T')[0]);
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/auth//uploadbook',
+        'http://localhost:5000/api/auth/uploadbook',
         form,
         {
           headers: { 'Content-Type': 'multipart/form-data' },
@@ -61,10 +65,10 @@ const UploadBook = () => {
         }
       );
 
-      setMessage(response.data.message);
+      setMessage(response.data.message || 'Book uploaded successfully!');
       setTimeout(() => navigate('/books'), 2000);
     } catch (err) {
-      console.error(err);
+      console.error("Upload Error:", err);
       setError(err.response?.data?.error || 'Upload failed');
     }
   };
@@ -77,20 +81,40 @@ const UploadBook = () => {
 
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <input type="text" name="title" placeholder="Title" value={formData.title} onChange={handleChange} required />
-        <input type="text" name="category" placeholder="Category" value={formData.category} onChange={handleChange} required />
-        <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} required></textarea>
-        <input type="date" name="publishedDate" value={formData.publishedDate} onChange={handleChange} />
-        
-          <label>
-            Part of Subscription?
-            <select name="inSubscription" value={formData.inSubscription} onChange={handleChange} className="subscribe">
-              <option value="false">No</option>
-              <option value="true">Yes</option>
-            </select>
-          </label>
 
-        <input type="file" accept=".pdf" onChange={e => setBookFile(e.target.files[0])} required />
-        <input type="file" accept="image/*" onChange={e => setCoverImage(e.target.files[0])} required />
+        <label>
+          Category:
+          <select name="category" value={formData.category} onChange={handleChange} required>
+            <option value="">-- Select Category --</option>
+            <option value="Literature">Literature</option>
+            <option value="Poems">Poems</option>
+            <option value="Novel">Novel</option>
+            <option value="Subject">Subject</option>
+          </select>
+        </label>
+
+        <textarea name="description" placeholder="Description" value={formData.description} onChange={handleChange} required></textarea>
+
+        <input type="date" name="publishedDate" value={formData.publishedDate} onChange={handleChange} />
+
+        <label>
+          Part of Subscription?
+          <select name="inSubscription" value={formData.inSubscription} onChange={handleChange} className="subscribe">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+          </select>
+        </label>
+
+        <label>
+          Upload Book (.pdf):
+          <input type="file" accept=".pdf" onChange={e => setBookFile(e.target.files[0])} required />
+        </label>
+
+        <label>
+          First Page Image:
+          <input type="file" accept="image/*" onChange={e => setCoverImage(e.target.files[0])} required />
+        </label>
+
         <button type="submit">Upload Book</button>
       </form>
     </div>

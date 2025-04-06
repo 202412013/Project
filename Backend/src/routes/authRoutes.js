@@ -13,6 +13,8 @@ const { addReview, getReviewsByBook } = require("../controllers/reviewcontroller
 
 const { createSubscriptionOrder, verifyPayment } = require("../controllers/Paymentcontroller");
 
+const { getAllBooks } = require('../controllers/getbookcontroller');
+
 
 
 const router = express.Router();
@@ -32,8 +34,13 @@ router.post('/reset-password', resetPassword);
 
 
 // 2) Books related API  :- 
+router.post('/uploadbook', bookstore.fields([{ name: 'bookFile', maxCount: 1  }, { name: 'coverImage', maxCount: 1  }]), uploadBook);
+router.get('/getbooks', (req, res, next) => {
+    console.log("✅ /getbooks route hit");
+    next();
+  }, getAllBooks);
 
-router.post('/uploadbook', bookstore.fields([{ name: 'bookFile' }, { name: 'coverImage' }]), uploadBook);
+
 router.post("/addreview", addReview);
 router.get("/book/:bookId", getReviewsByBook);
 
