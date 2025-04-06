@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./styles/Login.css";
 
@@ -81,7 +81,7 @@ const Login = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleChange}
-              className="input-field"
+              className="input-email"
               required
             />
           </div>
@@ -98,9 +98,12 @@ const Login = () => {
             />
           </div>
 
+    
           <button type="submit" className="submit-btn" disabled={loading}>
             {loading ? "Logging in..." : "Login"}
           </button>
+
+          <Link to="/forgot-password" className="forgot-link">Forgot Password</Link>
         </form>
       </div>
     </div>

@@ -11,6 +11,9 @@ import Wishlist from '../pages/Wishlist';
 import Contact from '../pages/Contact';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
+import ForgotPassword  from '../pages/ForgotPassword';
+import ResetPassword from '../pages/ResetPassword';
+import UploadBook from '../pages/UploadBook';
 
 const AppRoutes = () => {
   return (
@@ -26,6 +29,9 @@ const AppRoutes = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/profile" element={<Profile />} />
       <Route path ="/login" element={<Login />}/>
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/upload-book" element={<UploadBook/>} />
     </Routes>
   );
 };

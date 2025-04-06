@@ -42,7 +42,7 @@ const BookDetails = ({ user }) => {
       <div className="right-section">
         <h1 className="book-title">{book.title}</h1>
         <h2 className="book-author">By <span className="author-name">{book.author}</span></h2>
-        <div className="ratings">⭐⭐⭐⭐⭐ (8 Reviews)</div>
+        <div className="ratings">⭐⭐⭐⭐⭐(8 Reviews)</div>
 
         <div className="buttons">
         

@@ -1,21 +1,24 @@
 const User = require('../models/User');
 const sendEmail = require('../utils/SendEmail');
 const { hashPassword } = require('../utils/hashPassword');
+require('dotenv').config();
 
 exports.forgotPassword = async (req, res) => {
     try {
         const { email, userType } = req.body;
 
-        console.log(email);
-        console.log(userType);
-
+        console.log("CLIENT_URL:", process.env.CLIENT_URL);
+      
         const user = await User.findOne({ email, userRole: userType });
 
         if (!user) {
             return res.status(404).json({ error: 'Invalid Email or User Type' });
         }
 
-        const resetLink = `${process.env.CLIENT_URL}/reset-password?email=${email}`;
+        const baseUrl = process.env.CLIENT_URL;
+        console.log(baseUrl);
+
+        const resetLink = `${baseUrl}/reset-password?email=${email}`;
 
         const emailContent = `
             <p>You requested a password reset.</p>

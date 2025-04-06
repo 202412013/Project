@@ -65,11 +65,18 @@ body {
   
   .input-field {
     width: 100%;
+    box-sizing: border-box;
     padding: 10px;
-    border: 1px solid #f8d7da;
-    border-radius: 5px;
-    background-color: #f8d7da;
+    font-size: 16px;
   }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  
   
   .submit-btn {
     background: linear-gradient(to right, #3066BE, #C13A3A);
@@ -88,6 +95,19 @@ body {
   .error-message {
     color: red;
     margin-bottom: 10px;
+  }
+  
+  .forgot-link {
+    font-size: 14px;
+    color: #3066BE;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    justify-content: end;
+  }
+  
+  .forgot-link:hover {
+    text-decoration: underline;
   }
   
   /* 📱 Mobile Devices */

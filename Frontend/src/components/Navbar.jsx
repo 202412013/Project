@@ -43,6 +43,9 @@ const Navbar = () => {
         <li><Link to="/books">Books</Link></li>
         <li><Link to="/subscription">Subscription Plan</Link></li>
         <li><Link to="/about">About</Link></li>
+        {user?.userRole === "Author" && (
+          <li><Link to="/upload-book">Upload Book</Link></li>
+        )}
       </ul>
 
       <div className="allicon">
@@ -96,6 +99,10 @@ const Navbar = () => {
         <li><Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link></li>
         <li><Link to="/Wishlist" onClick={() => setIsMenuOpen(false)}>Wishlist</Link></li>
         <li><Link to="/notification" onClick={() => setIsMenuOpen(false)}>Notifications</Link></li>
+
+        {user?.userRole === "Author" && (
+          <li><Link to="/upload-book">Upload Book</Link></li>
+        )}
         
         {user ? (
           <>
