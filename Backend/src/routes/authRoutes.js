@@ -7,13 +7,13 @@ const { verifyToken } = require('../middleware/authmiddleware');
 
 const { forgotPassword, resetPassword } = require('../controllers/forgetPassword');
 const { uploadBook } = require('../controllers/bookcontroller');
-const bookstore = require('../middleware/bookstore');
+const  upload = require('../middleware/bookstore');
 
 const { addReview, getReviewsByBook } = require("../controllers/reviewcontroller");
 
 const { createSubscriptionOrder, verifyPayment } = require("../controllers/Paymentcontroller");
 
-const { getAllBooks } = require('../controllers/getbookcontroller');
+const { getAllBooks, getBookById } = require('../controllers/getbookcontroller');
 
 
 
@@ -34,11 +34,21 @@ router.post('/reset-password', resetPassword);
 
 
 // 2) Books related API  :- 
-router.post('/uploadbook', bookstore.fields([{ name: 'bookFile', maxCount: 1  }, { name: 'coverImage', maxCount: 1  }]), uploadBook);
+router.post(
+  '/uploadbook',
+  upload.fields([
+    { name: 'bookFile', maxCount: 2 },
+    { name: 'coverImage', maxCount: 2 },
+  ]),
+  uploadBook
+);
+
 router.get('/getbooks', (req, res, next) => {
     console.log("✅ /getbooks route hit");
     next();
   }, getAllBooks);
+  router.get('/book/:id', getBookById);
+
 
 
 router.post("/addreview", addReview);

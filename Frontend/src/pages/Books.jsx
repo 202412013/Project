@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './styles/Books.css'; // Optional: for styling
+import './styles/Books.css';
+import { useNavigate } from 'react-router-dom';
 
 const Books = () => {
   const [booksByCategory, setBooksByCategory] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -23,6 +25,10 @@ const Books = () => {
 
   if (loading) return <p>Loading books...</p>;
 
+  const handleBookClick = (bookId) => {
+    navigate(`/book/${bookId}`);
+  };
+
   return (
     <div className="books-container">
       {Object.keys(booksByCategory).map((category) => (
@@ -30,10 +36,12 @@ const Books = () => {
           <h2>{category}</h2>
           <div className="book-grid">
             {booksByCategory[category].map((book) => (
-              <div key={book._id} className="book-card">
-                <img src={book.coverImage} alt={book.title} className="book-image" />
-                <h4>{book.title}</h4>
-                <p>{book.author}</p>
+                <div key={book._id} className="book-card" onClick={() => handleBookClick(book._id)}>
+                    <img src={book.coverImage} alt={book.title} className="book-image" />
+                    <div className="book-info">
+                          <h4>{book.title}</h4>
+                          <p>{book.author}</p>
+                    </div>
               </div>
             ))}
           </div>

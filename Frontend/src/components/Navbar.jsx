@@ -78,9 +78,7 @@ const Navbar = () => {
             </Link>
             {/* ✅ Login Button */}
             <Link to="/login">
-              <button className="auth-button">
-                <FontAwesomeIcon icon={faUser} />
-              </button>
+                <button className="signup-button">Login</button>
             </Link>
           </>
         )}

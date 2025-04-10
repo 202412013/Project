@@ -1,40 +1,87 @@
-/* CSS/Profile.css */
 .profile-container {
-    text-align: center;
-    padding: 20px;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 35px 30px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+input{
+  width:auto;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
-  .profile-card {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    display: inline-block;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+}
+
+.profile-container h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #222;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.profile-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-container label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-container input {
+  margin-top: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.profile-container input:disabled {
+  background-color: #f1f1f1;
+  cursor: not-allowed;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .profile-container {
+    margin: 30px 16px;
+    padding: 25px 20px;
   }
-  
-  .sign-out, .add-account {
-    display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 150px;
-    border: none;
-    border-radius: 5px;
-    background: #ff4d4d;
-    color: white;
-    cursor: pointer;
+
+  .profile-container h2 {
+    font-size: 22px;
   }
-  
-  .add-account {
-    background: #4CAF50;
+
+  .profile-container input {
+    font-size: 14px;
+    padding: 10px 12px;
   }
-  
-  .profiles-list {
-    margin-top: 20px;
+
+  .profile-container label {
+    font-size: 13px;
   }
-  
+}

@@ -4,13 +4,9 @@ const jwt = require('jsonwebtoken');
 
 exports.login = async (req, res) => {
   try {
-    console.log("Hello");
     const { email, password } = req.body;
-    
-    console.log(req.body);
 
     const user = await User.findOne({ email });
-    console.log(user)
     if (!user) return res.status(400).json({ error: 'User not found' });
 
     const isMatch = await comparePassword(password, user.password);

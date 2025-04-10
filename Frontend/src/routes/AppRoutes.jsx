@@ -24,7 +24,7 @@ const AppRoutes = () => {
       <Route path="/subscription" element={<Subscription />} />
       <Route path="/trending" element={<Trending />} />
       <Route path="/registration" element={<Registration />} />
-      <Route path="/bookdetails/:id" element={<BookDetails />} />
+      <Route path="/book/:id" element={<BookDetails />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/profile" element={<Profile />} />
