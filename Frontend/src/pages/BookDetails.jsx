@@ -22,20 +22,40 @@ const BookDetails = () => {
     fetchBookDetails();
   }, [id]);
 
+
   if (!book) return <h1>Book Not Found</h1>;
 
-  const handleReadBook = () => {
-    if (!book.inSubscription) {
-      if (book.bookFile) {
-        setShowPdf(true);
-      } else {
-        alert('PDF not available for this book.');
+  const handleReadBook = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5000/api/auth/subscription-status`, {
+        withCredentials: true
+      });
+  
+      if (!book.inSubscription) {
+        if (book.bookFile) {
+          setShowPdf(true);
+        } else {
+          alert("PDF not available for this book.");
+        }
+        return;
       }
-      return;
+  
+      if (res.data.isSubscribed) {
+        if (book.bookFile) {
+          setShowPdf(true);
+        } else {
+          alert("PDF not available for this book.");
+        }
+      } else {
+        alert(" Your subscription has expired or is inactive. Redirecting to subscription page.");
+        navigate("/subscription");
+      }
+    } catch (error) {
+      console.error("Error checking subscription:", error);
+      alert("Something went wrong while checking subscription.");
     }
-
-    navigate('/subscription');
   };
+  
 
   const handleClosePdf = () => {
     setShowPdf(false);

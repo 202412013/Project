@@ -32,6 +32,7 @@ exports.createSubscriptionOrder = async (req, res) => {
         };
 
         const order = await razorpay.orders.create(options);
+        console.log(order);
         res.json({ success: true, order_id: order.id, key_id: process.env.RAZORPAY_ID_KEY });
     } catch (error) {
         res.status(500).json({ error: "Error creating order" });
@@ -66,6 +67,7 @@ exports.verifyPayment = async (req, res) => {
         });
 
         await subscription.save();
+
         res.json({ success: true, message: "Subscription activated" });
 
     } catch (error) {

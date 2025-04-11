@@ -37,9 +37,9 @@ const userSchema = new mongoose.Schema({
         enum: ['Student', 'Professor', 'Author', 'Admin'],
         required: true
     },
-    premiumExpiry: {
-        type: Date,
-        default: null 
+    Subscription: {
+        type: Boolean,
+        default: false 
     },
     createdAt: {
         type: Date,

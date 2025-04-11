@@ -15,6 +15,9 @@ const { createSubscriptionOrder, verifyPayment } = require("../controllers/Payme
 
 const { getAllBooks, getBookById } = require('../controllers/getbookcontroller');
 
+const { checkSubscription } = require('../controllers/Subscriptionstatus'); 
+
+
 
 
 const router = express.Router();
@@ -48,6 +51,10 @@ router.get('/getbooks', (req, res, next) => {
     next();
   }, getAllBooks);
   router.get('/book/:id', getBookById);
+
+  
+router.get('/subscription-status', verifyToken, checkSubscription);
+
 
 
 
