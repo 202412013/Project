@@ -49,9 +49,9 @@ const Navbar = () => {
       </ul>
 
       <div className="allicon">
-        <button className="Bell-icon">
+        {/* <button className="Bell-icon">
           <FontAwesomeIcon icon={faBell} />
-        </button>
+        </button> */}
 
         <Link to="/Wishlist">
           <button className="fav-icon">

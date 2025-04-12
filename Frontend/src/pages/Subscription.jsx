@@ -26,7 +26,6 @@ const Subscription = () => {
     { title: "Ultimate", price: 999, duration: "1 Year" },
   ];
 
-  console.log(user.user.fullName);
 
   const handlePayment = async (subscriptionType) => {
     if (!user.user || !user.user._id) {
