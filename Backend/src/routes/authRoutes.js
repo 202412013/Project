@@ -16,6 +16,7 @@ const { createSubscriptionOrder, verifyPayment } = require("../controllers/Payme
 const { getAllBooks, getBookById } = require('../controllers/getbookcontroller');
 
 const { checkSubscription } = require('../controllers/Subscriptionstatus'); 
+const { adminRoutes } = require('../controllers/adminRoutes');
 
 
 
@@ -47,10 +48,12 @@ router.post(
 );
 
 router.get('/getbooks', (req, res, next) => {
-    console.log("✅ /getbooks route hit");
+    // console.log("/getbooks route hit");
     next();
   }, getAllBooks);
   router.get('/book/:id', getBookById);
+
+  router.put('/admin/books/:id/toggle-active',adminRoutes);
 
   
 router.get('/subscription-status', verifyToken, checkSubscription);

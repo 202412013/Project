@@ -52,7 +52,7 @@ const Trending = () => {
         </div>
       </div>
       <div className="book-carousel-grid" ref={scrollRef}>
-        {trendingBooks.map((book) => (
+        {trendingBooks.filter(book => book.active).map((book) => (
           <div key={book._id} className="book-card" onClick={() => navigate(`/book/${book._id}`)}>
             <div className="image">
               <img src={book.coverImage} alt={book.title} />

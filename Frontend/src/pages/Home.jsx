@@ -74,7 +74,7 @@ const Home = () => {
           </div>
 
           <div className="book-carousel-grid" ref={(el) => (scrollRefs.current[category] = el)}>
-            {booksByCategory[category]?.map((book) => (
+            {booksByCategory[category]?.filter(book => book.active).map((book) => (
               <div
                 key={book._id}
                 className="book-card"

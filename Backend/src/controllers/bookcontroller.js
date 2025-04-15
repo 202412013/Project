@@ -24,9 +24,10 @@ exports.uploadBook = async (req, res) => {
       bookFile: req.files['bookFile'][0].path,
       coverImage: req.files['coverImage'][0].path,
       publishedDate: req.body.publishedDate || new Date().toISOString().split('T')[0],
+      active,
     });
 
-    console.log("Attempting to save book:", newBook);
+    console.log("Attempting to save book:", newBook.Active);
     await newBook.save();
 
     res.status(201).json({ 

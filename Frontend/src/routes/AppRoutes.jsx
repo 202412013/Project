@@ -15,6 +15,12 @@ import ForgotPassword  from '../pages/ForgotPassword';
 import ResetPassword from '../pages/ResetPassword';
 import UploadBook from '../pages/UploadBook';
 
+
+// Admin Pages
+import AdminManageUsers from '../pages/AdminManageUsers';
+import AdminManageBooks from '../pages/AdminManageBooks';
+import AdminManageReviews from '../pages/AdminManageReviews';
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -32,6 +38,12 @@ const AppRoutes = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/upload-book" element={<UploadBook/>} />
+
+       {/* Admin Routes */}
+      <Route path="/admin/manage-users" element={<AdminManageUsers />} />
+      <Route path="/admin/manage-books" element={<AdminManageBooks />} />
+      <Route path="/admin/manage-reviews" element={<AdminManageReviews />} />
+
     </Routes>
   );
 };

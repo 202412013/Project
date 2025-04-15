@@ -35,7 +35,7 @@ const Books = () => {
         <div key={category} className="category-section">
           <h2>{category}</h2>
           <div className="book-grid">
-            {booksByCategory[category].map((book) => (
+            {booksByCategory[category].filter(book => book.active).map((book) => (
                 <div key={book._id} className="book-card" onClick={() => handleBookClick(book._id)}>
                     <img src={book.coverImage} alt={book.title} className="book-image" />
                     <div className="book-info">

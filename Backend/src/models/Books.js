@@ -30,6 +30,10 @@ const bookSchema = new mongoose.Schema({
     publishedDate: {
         type: Date,
         default: Date.now 
+    },
+    active: { // ✅ lowercase field name
+        type: Boolean,
+        default: true
     }
 }, { timestamps: true });
 
