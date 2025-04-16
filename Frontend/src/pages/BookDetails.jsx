@@ -8,8 +8,16 @@ const BookDetails = () => {
   const navigate = useNavigate();
   const [book, setBook] = useState(null);
   const [showPdf, setShowPdf] = useState(false); // for toggling PDF
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState('');
+  const [newRating, setNewRating] = useState(5);
 
   useEffect(() => {
+    fetchBookDetails();
+    fetchReviews();
+  }, [id]);
+
+
     const fetchBookDetails = async () => {
       try {
         const res = await axios.get(`http://localhost:5000/api/auth/book/${id}`);
@@ -19,8 +27,14 @@ const BookDetails = () => {
       }
     };
 
-    fetchBookDetails();
-  }, [id]);
+    const fetchReviews = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/auth/reviews/${id}`);
+        setReviews(res.data);
+      } catch (err) {
+        console.error('Failed to fetch reviews:', err);
+      }
+    };
 
 
   if (!book) return <h1>Book Not Found</h1>;
@@ -55,6 +69,26 @@ const BookDetails = () => {
       alert("Something went wrong while checking subscription.");
     }
   };
+
+
+  const handleSubmitReview = async (e) => {
+    e.preventDefault();
+    if (!newReview.trim()) return;
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/addComment",
+        { bookId: id, rating: newRating, review: newReview },
+        { withCredentials: true }
+      );
+      setReviews([...reviews, res.data]);
+      setNewReview('');
+      setNewRating(5);
+    } catch (err) {
+      console.error("Failed to submit review:", err);
+      alert("You must be logged in to leave a review.");
+    }
+  };
   
 
   const handleClosePdf = () => {
@@ -79,13 +113,53 @@ const BookDetails = () => {
         <div className="right-section">
           <h1 className="book-title">{book.title}</h1>
           <h2 className="book-author">By <span className="author-name">{book.author}</span></h2>
-          <div className="ratings">⭐⭐⭐⭐⭐ (8 Reviews)</div>
 
           <div className="buttons">
             <button onClick={handleReadBook}>Read Online</button>
           </div>
 
           <p className="book-info">{book.description}</p>
+
+          <div className="reviews-section">
+            <h3>Reviews</h3>
+            {reviews.length > 0 ? (
+              <ul className="review-list">
+                {reviews.map((rev) => (
+                  <li key={rev._id} className="review-card">
+                  <div className="review-header">
+                    <strong>{rev.user.fullName}</strong>
+                    <span className="stars">
+                      {'★'.repeat(rev.rating)}{'☆'.repeat(5 - rev.rating)}
+                    </span>
+                  </div>
+                  <p className="review-text">{rev.review}</p>
+                  <small className="review-date">{new Date(rev.createdAt).toLocaleDateString()}</small>
+                </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No reviews yet.</p>
+            )}
+            <form onSubmit={handleSubmitReview} className="review-form">
+            <span className="star-rating">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <span
+                          key={star}
+                          className={`star ${star <= newRating ? 'filled' : ''}`}
+                          onClick={() => setNewRating(star)}
+                        >
+                          ★
+                        </span>
+                      ))}
+              </span>
+              <textarea
+                value={newReview}
+                onChange={(e) => setNewReview(e.target.value)}
+                placeholder="Write your review here..."
+              />
+              <button type="submit">Submit Review</button>
+            </form>
+          </div>
         </div>
       ) : (
         <div className="pdf-viewer">
