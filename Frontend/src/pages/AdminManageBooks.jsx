@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styles/AdminManageBooks.css';
+import Subscription from './Subscription';
 
 const AdminManageBooks = () => {
   const [booksByCategory, setBooksByCategory] = useState({});
@@ -45,8 +46,8 @@ const AdminManageBooks = () => {
               <tr>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Active Status</th>
-                <th>Toggle</th>
+                <th>Subscription</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -54,7 +55,8 @@ const AdminManageBooks = () => {
                 <tr key={book._id}>
                   <td>{book.title}</td>
                   <td>{book.author}</td>
-                  <td>{book.active ? 'active' : 'Inactive'}</td>
+                  <td>{book.inSubscription?"Required":"Not Required"}</td>
+                  {/* <td>{book.active ? 'active' : 'Inactive'}</td> */}
                   <td>
                     <button
                       className={`toggle-button ${book.active ? 'green' : 'red'}`}

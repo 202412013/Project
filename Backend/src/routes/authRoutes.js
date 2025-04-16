@@ -17,6 +17,7 @@ const { getAllBooks, getBookById } = require('../controllers/getbookcontroller')
 
 const { checkSubscription } = require('../controllers/Subscriptionstatus'); 
 const { adminRoutes } = require('../controllers/adminRoutes');
+const { deleteuser, viewUser } = require('../controllers/manageUser');
 
 
 
@@ -53,10 +54,14 @@ router.get('/getbooks', (req, res, next) => {
   }, getAllBooks);
   router.get('/book/:id', getBookById);
 
+  
+  // Admin side
   router.put('/admin/books/:id/toggle-active',adminRoutes);
+  router.delete('/admin/users/:id',deleteuser);
+  router.get('/admin/users',viewUser);
 
   
-router.get('/subscription-status', verifyToken, checkSubscription);
+  router.get('/subscription-status', verifyToken, checkSubscription);
 
 
 

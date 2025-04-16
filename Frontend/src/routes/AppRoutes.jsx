@@ -19,7 +19,7 @@ import UploadBook from '../pages/UploadBook';
 // Admin Pages
 import AdminManageUsers from '../pages/AdminManageUsers';
 import AdminManageBooks from '../pages/AdminManageBooks';
-import AdminManageReviews from '../pages/AdminManageReviews';
+// import AdminManageReviews from '../pages/AdminManageReviews';
 
 const AppRoutes = () => {
   return (
@@ -42,7 +42,7 @@ const AppRoutes = () => {
        {/* Admin Routes */}
       <Route path="/admin/manage-users" element={<AdminManageUsers />} />
       <Route path="/admin/manage-books" element={<AdminManageBooks />} />
-      <Route path="/admin/manage-reviews" element={<AdminManageReviews />} />
+      {/* <Route path="/admin/manage-reviews" element={<AdminManageReviews />} /> */}
 
     </Routes>
   );

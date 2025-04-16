@@ -44,7 +44,7 @@ const Navbar = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/admin/manage-users">Manage Users</Link></li>
             <li><Link to="/admin/manage-books">Manage Books</Link></li>
-            <li><Link to="/admin/manage-reviews">Manage Reviews</Link></li>
+            {/* <li><Link to="/admin/manage-reviews">Manage Reviews</Link></li> */}
           </>
         ) : (
           <>
@@ -108,7 +108,7 @@ const Navbar = () => {
             <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
             <li><Link to="/admin/manage-users" onClick={() => setIsMenuOpen(false)}>Manage Users</Link></li>
             <li><Link to="/admin/manage-books" onClick={() => setIsMenuOpen(false)}>Manage Books</Link></li>
-            <li><Link to="/admin/manage-reviews" onClick={() => setIsMenuOpen(false)}>Manage Reviews</Link></li>
+            {/* <li><Link to="/admin/manage-reviews" onClick={() => setIsMenuOpen(false)}>Manage Reviews</Link></li> */}
           </>
         ) : (
           <>
