@@ -3,7 +3,7 @@ import axios from 'axios';
 import './styles/Trending.css';
 import { useNavigate } from 'react-router-dom';
 
-const Trending = () => {
+const Trending = ({ searchQuery }) => {
   const [trendingBooks, setTrendingBooks] = useState([]);
   const navigate = useNavigate();
   const scrollRef = useRef(null);
@@ -52,12 +52,14 @@ const Trending = () => {
         </div>
       </div>
       <div className="book-carousel-grid" ref={scrollRef}>
-        {trendingBooks.filter(book => book.active).map((book) => (
+        {trendingBooks.filter(book => book.active &&
+          (book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          book.author.toLowerCase().includes(searchQuery.toLowerCase()))).map((book) => (
           <div key={book._id} className="book-card" onClick={() => navigate(`/book/${book._id}`)}>
             <div className="image">
               <img src={book.coverImage} alt={book.title} />
             </div>
-            <h4>{book.title}</h4>
+            <h5>{book.title}</h5>
             <p>{book.author}</p>
           </div>
         ))}

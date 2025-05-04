@@ -26,7 +26,7 @@ const UploadBook = () => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  if (!user || user.userRole !== "Author") {
+  if (!user || !(user.userRole === "Author" || user.userRole === "Admin")) {
     return <p>Unauthorized access</p>;
   }
 

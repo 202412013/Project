@@ -1,4 +1,6 @@
 const Book = require('../models/Books'); 
+const { notifyUsersOfNewBook } = require('./Notificationcontroller');
+
 
 exports.uploadBook = async (req, res) => {
   try {
@@ -28,7 +30,9 @@ exports.uploadBook = async (req, res) => {
     });
 
     console.log("Attempting to save book:", newBook.active);
+
     await newBook.save();
+    await notifyUsersOfNewBook(newBook);
 
     res.status(201).json({ 
       message: "Book uploaded successfully!", 

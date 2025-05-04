@@ -30,22 +30,24 @@ const Navbar = () => {
       </div>
 
       {/* Search Bar (Always Visible) */}
-      <div className="search">
+      {/* <div className="search">
         <input type="text" className="search-bar" placeholder="Search..." />
         <button className="Search-icon">
           <FontAwesomeIcon icon={faSearch} />
         </button>
-      </div>
+      </div> */}
 
       {/* Desktop Navbar Links & Icons */}
       <ul className="nav-menu">
         {user?.userRole === "Admin" ? (
-          <>
+          <div className="tag">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/admin/manage-users">Manage Users</Link></li>
             <li><Link to="/admin/manage-books">Manage Books</Link></li>
+            <li><Link to="/upload-book">Upload Book</Link></li>
+          
             {/* <li><Link to="/admin/manage-reviews">Manage Reviews</Link></li> */}
-          </>
+          </div>
         ) : (
           <>
             <li><Link to="/">Home</Link></li>
@@ -65,11 +67,11 @@ const Navbar = () => {
           <FontAwesomeIcon icon={faBell} />
         </button> */}
 
-        <Link to="/Wishlist">
+        {/* <Link to="/Wishlist">
           <button className="fav-icon">
             <FontAwesomeIcon icon={faHeart} />
           </button>
-        </Link>
+        </Link> */}
 
         {user ? (
           <>
@@ -108,7 +110,7 @@ const Navbar = () => {
             <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
             <li><Link to="/admin/manage-users" onClick={() => setIsMenuOpen(false)}>Manage Users</Link></li>
             <li><Link to="/admin/manage-books" onClick={() => setIsMenuOpen(false)}>Manage Books</Link></li>
-            {/* <li><Link to="/admin/manage-reviews" onClick={() => setIsMenuOpen(false)}>Manage Reviews</Link></li> */}
+            <li><Link to="/upload-book" onClick={() => setIsMenuOpen(false)}>Upload Book</Link></li>
           </>
         ) : (
           <>
@@ -116,7 +118,7 @@ const Navbar = () => {
             <li><Link to="/books" onClick={() => setIsMenuOpen(false)}>Books</Link></li>
             <li><Link to="/subscription" onClick={() => setIsMenuOpen(false)}>Subscription Plan</Link></li>
             <li><Link to="/about" onClick={() => setIsMenuOpen(false)}>About</Link></li>
-            <li><Link to="/Wishlist" onClick={() => setIsMenuOpen(false)}>Wishlist</Link></li>
+            {/* <li><Link to="/Wishlist" onClick={() => setIsMenuOpen(false)}>Wishlist</Link></li> */}
             <li><Link to="/notification" onClick={() => setIsMenuOpen(false)}>Notifications</Link></li>
             {user?.userRole === "Author" && (
               <li><Link to="/upload-book" onClick={() => setIsMenuOpen(false)}>Upload Book</Link></li>
@@ -127,7 +129,7 @@ const Navbar = () => {
         {user ? (
           <>
             <li><Link to="/Profile" onClick={() => setIsMenuOpen(false)}>Profile</Link></li>
-            <li><button className="logout-button" onClick={handleLogout}>Logout</button></li>
+            <li><button className="logout-button"   style={{ backgroundColor: "white" }}  onClick={handleLogout}>Logout</button></li>
           </>
         ) : (
           <>

@@ -66,7 +66,7 @@ const Registration = () => {
     <div className="auth-container">
       <div className="auth-left">
         <h2>New Here?</h2>
-        <p>Sign up and start your journey with us</p>
+        <p className="textdemo">Sign up and start your journey with us</p>
         <button className="switch-btn">
           SIGN IN
         </button>
@@ -90,7 +90,7 @@ const Registration = () => {
             placeholder="Enter your full name"
             value={formData.fullName}
             onChange={handleChange}
-            className="input-field"
+            className="input-fie"
             required
           />
 
@@ -100,7 +100,7 @@ const Registration = () => {
             placeholder="Enter your email"
             value={formData.email}
             onChange={handleChange}
-            className="input-field"
+            className="input-fie"
             required
           />
 
@@ -110,7 +110,7 @@ const Registration = () => {
             placeholder="Enter your password"
             value={formData.password}
             onChange={handleChange}
-            className="input-field"
+            className="input-fie"
             required
           />
 
@@ -120,7 +120,7 @@ const Registration = () => {
             placeholder="Enter your phone number"
             value={formData.phoneNumber}
             onChange={handleChange}
-            className="input-field"
+            className="input-fie"
             required
           />
 

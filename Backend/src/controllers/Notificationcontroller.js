@@ -17,7 +17,7 @@ exports.notifyUsersOfNewBook = async (newBook) => {
             <p><strong>Author:</strong> ${newBook.author}</p>
             <p><strong>Category:</strong> ${newBook.category}</p>
             <p><strong>Description:</strong> ${newBook.description}</p>
-            <p>Click <a href="${process.env.CLIENT_URL}/api/auth/uploadbook">here</a> to check it out!</p>
+            <p>Click <a href="${process.env.CLIENT_URL}books">here</a> to check it out!</p>
             <br/>
             <p>Happy Reading! 📚✨</p>
         `;
